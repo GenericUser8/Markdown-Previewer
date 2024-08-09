@@ -1,0 +1,31 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+.input-container {
+  min-width: 100%;
+  border: 2px solid black;
+  border-radius: 10pt;
+  padding: 10pt;
+  margin-bottom: 10pt;
+}
+
+.markdown-container {
+  padding: 10pt;
+  text-align: left;
+  min-width: 100%;
+  border: 2px solid black;
+  border-radius: 10pt;
+  
+  img {
+    width: 100%;
+  }
+}
