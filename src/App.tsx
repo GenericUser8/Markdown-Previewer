@@ -3,15 +3,8 @@ import './App.scss'
 
 import { marked } from 'marked';
 
-// Window display settings
-enum Focus {
-  All,
-  Input,
-  Output
-}
-
 export default function App() {
-  const [focus, setFocus] = useState(Focus.All);
+  // const [focus] = useState(Focus.All);
   const [input, setInput] = useState(
 `# This is a heading 
 ## This is a subheading
@@ -34,30 +27,30 @@ Here is a **list** of fruits:
       <MarkdownInput
         setInput={setInput}
         input={input}
-        focus={focus}
+        // focus={focus}
       />
       <ShowMarkdown 
         input={input}
-        focus={focus}
+        // focus={focus}
       />
     </>
   );
 }
 
 interface MarkdownInputProps {
-  setInput: any,
+  setInput: React.Dispatch<React.SetStateAction<string>>,
   input: string,
-  focus: Focus
+  // focus: Focus
 }
-function MarkdownInput({ setInput, input, focus }: MarkdownInputProps) {
+function MarkdownInput({ setInput, input, /* focus */}: MarkdownInputProps) {
 
   function handleInput(event: React.ChangeEvent<HTMLTextAreaElement>): void {
     setInput(event.target.value);
   }
-  const show: boolean = focus === Focus.Output;
+  // const show: boolean = focus === Focus.Output;
 
   return (
-    <div className="input-container" hidden={show}> 
+    <div className="input-container"> 
       <form>
         <textarea 
           className="form-control" 
@@ -72,10 +65,9 @@ function MarkdownInput({ setInput, input, focus }: MarkdownInputProps) {
 }
 
 interface ShowMarkdownProps {
-  input: string,
-  focus: Focus
+  input: string
 }
-function ShowMarkdown({ input, focus }: ShowMarkdownProps) {
+function ShowMarkdown({ input }: ShowMarkdownProps) {
   const result = { __html: marked.parse(input) };
   return (
     <div className="markdown-container">
